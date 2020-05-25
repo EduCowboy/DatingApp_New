@@ -16,6 +16,8 @@ using DatingApp.API.Services.Interface;
 using DatingApp.API.Services.Service;
 using DatingApp.API.Data.Interface;
 using DatingApp.API.Data.Repository;
+using AutoMapper;
+using DatingApp.API.Mapper;
 
 namespace DatingApp.API
 {
@@ -32,6 +34,7 @@ namespace DatingApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
+            services.AddAutoMapper(typeof(MappingProfile));
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IValuesService, ValuesService>();
