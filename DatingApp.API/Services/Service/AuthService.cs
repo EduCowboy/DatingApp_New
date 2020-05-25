@@ -66,5 +66,11 @@ namespace DatingApp.API.Services.Service
             }
             return true;
         }
+
+        public async Task<bool> UserExists(string username)
+        {
+            var user = await _authRepo.UserExists(username);
+            return user;
+        }
     }
 }
